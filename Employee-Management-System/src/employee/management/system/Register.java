@@ -93,15 +93,16 @@ public class Register extends JFrame implements ActionListener {
 
         try {
             Conn c = new Conn();
-            String query = "INSERT INTO login (username, password, email) VALUES (?, ?, ?)";
+            String query = "INSERT INTO login (username, password, email, role) VALUES (?, ?, ?, ?)";
             PreparedStatement ps = c.getConnection().prepareStatement(query);
             ps.setString(1, username);
             ps.setString(2, password);
             ps.setString(3, email);
+            ps.setString(4, "user"); // Gán quyền mặc định là 'user'
 
             int result = ps.executeUpdate();
             if (result > 0) {
-                JOptionPane.showMessageDialog(null, "Registration successful!");
+                JOptionPane.showMessageDialog(null, "Registration successful! Your account is pending approval.");
                 dispose();
                 new Login(); // Chuyển về màn hình đăng nhập
             } else {
@@ -116,3 +117,4 @@ public class Register extends JFrame implements ActionListener {
         new Register();
     }
 }
+

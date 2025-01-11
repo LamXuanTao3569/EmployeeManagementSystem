@@ -1,4 +1,5 @@
 package employee.management.system;
+import employee.management.system.GlobalData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -73,6 +74,8 @@ public class Login extends JFrame implements ActionListener{
             
             ResultSet rs = ps.executeQuery();
             if (rs != null && rs.next()) {
+                GlobalData.username = username; // Lưu username
+                GlobalData.role = rs.getString("role").trim(); // Lưu role
                 dispose(); // Ẩn cửa sổ đăng nhập
                 new Home(); // Mở cửa sổ chính sau khi đăng nhập thành công
             } else {

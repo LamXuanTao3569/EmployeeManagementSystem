@@ -10,12 +10,10 @@ public class UpdateEmployee extends JFrame implements ActionListener{
     JTextField tfeducation, tfname, tffname, tfaddress, tfphone, tfccid, tfemail, tfsalary, tfdesignation, tfdob, tfempId;
     JLabel lblempId;
     JButton add, back;
-    String empId;
     JComboBox<String> empIdComboBox;
-
+    String empId;
     
-    UpdateEmployee(String empId) {
-        this.empId = empId;
+    UpdateEmployee() {
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         
@@ -251,18 +249,23 @@ public class UpdateEmployee extends JFrame implements ActionListener{
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Details updated successfully");
                 setVisible(false);
-                new Home();
+                new ViewEmployee();
             } catch (SQLException e) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(this, "Error updating data: " + e.getMessage());
             }
         } else {
             setVisible(false);
-            new Home();
+            new ViewEmployee();
         } 
+    }
+    
+    public void setEmployeeId(String empId) {
+        this.empId = empId;
+        displayEmployeeInfo(empId); // Tải thông tin nhân viên ngay sau khi đặt empId
     }
 
     public static void main(String[] args) {
-        new UpdateEmployee("");
+        new UpdateEmployee();
     }
 }

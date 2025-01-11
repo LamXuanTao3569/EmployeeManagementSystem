@@ -21,7 +21,6 @@ public class Conn {
             return c;
     }
      
-    
     // Thêm phương thức close để đóng kết nối khi không cần thiết
     public void close() throws SQLException {
         if (s != null) {

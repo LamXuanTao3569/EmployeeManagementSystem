@@ -102,7 +102,9 @@ public class ViewEmployee extends JFrame implements ActionListener{
             int response = JOptionPane.showConfirmDialog(null, "Do you want to update this employee?", "Confirm Update", JOptionPane.YES_NO_OPTION);
             if (response == JOptionPane.YES_OPTION) {
                 setVisible(false);
-                new UpdateEmployee(cemployeeId.getSelectedItem().toString());
+                UpdateEmployee updateEmployee = new UpdateEmployee();
+                updateEmployee.setEmployeeId(cemployeeId.getSelectedItem().toString());
+
             }
         } else if (ae.getSource() == back) {
             int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to go back?", "Confirm Exit", JOptionPane.YES_NO_OPTION);
